@@ -1,6 +1,10 @@
 
+
+
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,19 +21,65 @@ import java.sql.Statement;
 public class LoginReg { 
     
     static Connection con = ConnectionSQL.connectDB();
+    static Statement stmt;
+    static ResultSet rs;
+    static String na;
+    static int pa;
+    static int ac;
+    static int bl;
     
-    public LoginReg(){
-    //Connection con = null; 
-    //PreparedStatement p = null; 
-    //con = ConnectionSQL.connectDB(); 
-    }
-    
-    public void ins() throws SQLException{
-        Statement stmt = con.createStatement();
-        int result = stmt.executeUpdate("INSERT INTO `Bank` (`account_number`, `user_name`, `account_balance`, `pass_code`) VALUES ('1034', 'roy', '100', '2211');");
-        if (result > 0)
-            System.out.println("successfully inserted");
-        else
-            System.out.println("unsucessful insertion ");
+    public static void ins() throws SQLException{
+         // SELECT query
+             stmt= con.createStatement();
+            
+            String q1 = "SELECT * FROM `Bank`";
+            //PreparedStatement st= con.prepareStatement(q1);
+             rs = stmt.executeQuery(q1);
+            if (rs.next())
+            {
+                System.out.println("account_number : " + rs.getInt(1));
+                System.out.println("user_name : " + rs.getString(2));
+                System.out.println("account_balance :" + rs.getInt(3));
+                System.out.println("pass_code :" + rs.getString(4));
+                //System.out.println( rs);
+            }
+            else
+            {
+                System.out.println("No such user id is already registered");
+            }
+}
+    public static void createAcc(String na,double bl,int pa) throws SQLException{
+         // SELECT query
+             stmt= con.createStatement();
+            
+            String q1 = "INSERT INTO Bank "
+                    + "(user_name, account_balance, pass_code)"
+                    + " VALUES ('"+na+"', '"+bl+"', '"+pa+"');";
+            int result = stmt.executeUpdate(q1);
+             //rs = stmt.executeQuery(q1);
+            if (result > 0){
+                System.out.println("successfully inserted");}
+            else{
+                System.out.println("unsucessful insertion ");}
+}
+    public static void login(String na,int pa) throws SQLException{
+         // SELECT query
+             stmt= con.createStatement();
+            
+            String q1 = "SELECT * FROM Bank WHERE user_name='"+na+"' AND pass_code='"+pa+"'";
+            //PreparedStatement st= con.prepareStatement(q1);
+             rs = stmt.executeQuery(q1);
+            if (rs.next())
+            {
+                System.out.println("account_number : " + rs.getInt(1));
+                System.out.println("user_name : " + rs.getString(2));
+                System.out.println("account_balance :" + rs.getInt(3));
+                System.out.println("pass_code :" + rs.getString(4));
+                
+            }
+            else
+            {
+                System.out.println("No such user is registered");
+            }
 }
 }

@@ -12,14 +12,40 @@ import java.io.*;
 public class ConnectionSQL {
     // Connection instance 
     static Connection con;
+    static Statement stmt;
+    static ResultSet rs;
+    
     public static Connection connectDB() throws SQLException, ClassNotFoundException
     { 
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection( 
+            con = DriverManager.getConnection( 
                     "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5485641", "sql5485641", "CmwSKSz67l");
             System.out.println("Connection sucess!");
-           Statement stmt = con.createStatement();
+            //stmt = con.createStatement();
+             
+           
+            //con.close();
+        } 
+        catch (SQLException e) {
+            System.out.println("Connection failed!");
+            System.out.println(e); 
+
+        } 
+        return con;
+    }
+    /*
+    public void insertdata() throws SQLException{
+        
+        Statement stmt = con.createStatement();
+        int result = stmt.executeUpdate("INSERT INTO `Bank` (`account_number`, `user_name`, `account_balance`, `pass_code`) VALUES ('1034', 'roy', '100', '2211');");
+        if (result > 0)
+            System.out.println("successfully inserted");
+        else
+            System.out.println("unsucessful insertion ");
+    
+    
+          stmt = con.createStatement();
              
             // SELECT query
             String q1 = "SELECT * FROM `Bank`";
@@ -35,23 +61,11 @@ public class ConnectionSQL {
             {
                 System.out.println("No such user id is already registered");
             }
-        } 
-        catch (SQLException e) {
-            System.out.println("Connection failed!");
-            System.out.println(e); 
-
-        } 
-        return null;
-    }
-    /*
-    public void insertdata() throws SQLException{
-        
-        Statement stmt = con.createStatement();
-        int result = stmt.executeUpdate("INSERT INTO `Bank` (`account_number`, `user_name`, `account_balance`, `pass_code`) VALUES ('1034', 'roy', '100', '2211');");
-        if (result > 0)
-            System.out.println("successfully inserted");
-        else
-            System.out.println("unsucessful insertion ");
+    
+    
+    
+    
+    
     
     }*/
    

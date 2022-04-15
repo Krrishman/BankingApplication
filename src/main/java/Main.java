@@ -14,15 +14,10 @@ public class Main {
     public static void main(String[] args) throws SQLException {
 		System.out.println("Hello World");
                 System.out.println("Hello World");
-       //Connection con = null; 
-
-        //PreparedStatement p = null; 
-
-        //ConnectionSQL.connectDB(); 
-        //ConnectionSQL conn = new ConnectionSQL();
-        //conn.insertdata();
-        LoginReg ss =new LoginReg();
-        //ss.ins();
+      
+        LoginReg.ins();
+        LoginReg.login("ron", 2222);
+        LoginReg.createAcc("kgf",100,1452);
         
     }
 }
