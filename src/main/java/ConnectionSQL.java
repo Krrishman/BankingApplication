@@ -20,53 +20,10 @@ public class ConnectionSQL {
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection( 
-                    "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5485641", "sql5485641", "CmwSKSz67l");
-            System.out.println("Connection sucess!");
-            //stmt = con.createStatement();
-             
-           
-            //con.close();
+                    "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5488014", "sql5488014", "qTxEvBpucl");
         } 
-        catch (SQLException e) {
-            System.out.println("Connection failed!");
-            System.out.println(e); 
-
-        } 
+        catch (SQLException e) { System.out.println(e); } 
         return con;
     }
-    /*
-    public void insertdata() throws SQLException{
-        
-        Statement stmt = con.createStatement();
-        int result = stmt.executeUpdate("INSERT INTO `Bank` (`account_number`, `user_name`, `account_balance`, `pass_code`) VALUES ('1034', 'roy', '100', '2211');");
-        if (result > 0)
-            System.out.println("successfully inserted");
-        else
-            System.out.println("unsucessful insertion ");
-    
-    
-          stmt = con.createStatement();
-             
-            // SELECT query
-            String q1 = "SELECT * FROM `Bank`";
-            ResultSet rs = stmt.executeQuery(q1);
-            if (rs.next())
-            {
-                System.out.println("account_number : " + rs.getInt(1));
-                System.out.println("user_name : " + rs.getString(2));
-                System.out.println("account_balance :" + rs.getInt(3));
-                System.out.println("pass_code :" + rs.getString(4));
-            }
-            else
-            {
-                System.out.println("No such user id is already registered");
-            }
-    
-    
-    
-    
-    
-    
-    }*/
    
 }
