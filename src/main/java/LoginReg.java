@@ -21,6 +21,7 @@ import java.time.LocalDate;
 public class LoginReg { 
     
     static Connection con = ConnectionSQL.connectDB();
+
     static Statement stmt;
     static ResultSet rs;
     static ResultSet rp;
@@ -46,10 +47,11 @@ public class LoginReg {
             }
             else{ System.out.println("No such user id is already registered");}
 }
-     public static void createAcc(String na,double bl,int pa,String ty) throws SQLException{
+     public static void createAcc(String na,double bl,int pa,String ty) {
          // SELECT query
-             stmt= con.createStatement();
+      
             try{
+            stmt= con.createStatement();
             String q1 = "INSERT INTO Bank (user_name,pass_code,account_type,account_balance,date)"
                     + " VALUES ('"+na+"', '"+pa+"', '"+ty+"', '"+bl+"', '"+locdate+"');";
             int result = stmt.executeUpdate(q1);
@@ -62,7 +64,7 @@ public class LoginReg {
     public static void login(String na,int pa) throws SQLException{
          // SELECT query
              stmt= con.createStatement();
-            String q1 = "SELECT * FROM Bank WHERE user_name='"+na+"' AND pass_code='"+pa+"';";
+            String q1 = "SELECT * FROM Bank WHERE user_name='" + na + "' AND pass_code='" + pa + "';";
              rs = stmt.executeQuery(q1);
              if (rs.next());
              else{throw new ArithmeticException("Invalid UserName Or Password!");}
@@ -72,9 +74,9 @@ public class LoginReg {
     
     public static void withdraw(int ac,double bl,String x) throws SQLException{
          // SELECT query
-             stmt= con.createStatement();
+            stmt= con.createStatement();
              try{
-            String q1 = "UPDATE Bank SET account_balance = account_balance "+x+bl+ " WHERE Bank.account_number = "+ac+";";
+            String q1 = "UPDATE Bank SET account_balance = account_balance " + x + bl + " WHERE Bank.account_number = " + ac + ";";
             //int result = stmt.executeUpdate(q1);
             stmt.executeUpdate(q1);
              

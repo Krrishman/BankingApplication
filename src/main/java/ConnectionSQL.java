@@ -15,7 +15,7 @@ public class ConnectionSQL {
     static Statement stmt;
     static ResultSet rs;
     
-    public static Connection connectDB() throws SQLException, ClassNotFoundException
+    public static Connection connectDB()
     { 
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,6 +23,7 @@ public class ConnectionSQL {
                     "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5488014", "sql5488014", "qTxEvBpucl");
         } 
         catch (SQLException e) { System.out.println(e); } 
+        catch (ClassNotFoundException e) { System.out.println(e); }
         return con;
     }
    
