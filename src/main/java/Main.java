@@ -28,18 +28,17 @@ public class Main {
         System.out.println("~ Hello, Wellcome To Our Free Banking App ~");
         System.out.println("---------------------------------------------\n");
         
-        
-        //here?
-        
 while (num !=3){
+            try{ 
                 num2 = 0;
                 System.out.println("(1) Login");
                 System.out.println("(2) Register For New Account");
                 System.out.println("(3) Exit");
                 System.out.println("Enter: ");
                 num = sc.nextInt();
-            
+            }catch(Exception e){sc.nextLine();System.out.println(e);}
             if (num==1){
+                 try{ 
                         System.out.println("UserName : ");
                         sc.nextLine();
                         na=sc.nextLine();
@@ -131,6 +130,7 @@ while (num !=3){
                         sc.nextLine();
                         y =sc.nextLine();}
                 }
+            }catch(Exception e){ sc.next(); System.out.println(e);}
                 
               
             }
