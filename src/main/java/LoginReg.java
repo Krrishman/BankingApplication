@@ -69,4 +69,18 @@ public class LoginReg {
          
              
 }
+    
+    public static void withdraw(int ac,double bl,String x) throws SQLException{
+         // SELECT query
+             stmt= con.createStatement();
+             try{
+            String q1 = "UPDATE Bank SET account_balance = account_balance "+x+bl+ " WHERE Bank.account_number = "+ac+";";
+            //int result = stmt.executeUpdate(q1);
+            stmt.executeUpdate(q1);
+             
+             }catch(SQLException e){System.out.println(e);}
+             catch(Exception e){System.out.println(e);}
+}
+    
+    
 }
