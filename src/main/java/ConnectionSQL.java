@@ -7,16 +7,20 @@
  *
  * @author Dadavai
  */
-import java.sql.*; 
-import java.io.*;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.DriverManager;
+
 public class ConnectionSQL {
     // Connection instance 
     static Connection con;
     static Statement stmt;
     static ResultSet rs;
     
-    public static Connection connectDB()
-    { 
+    public static Connection connectDB() throws ClassNotFoundException{ 
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection( 

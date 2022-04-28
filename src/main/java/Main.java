@@ -13,17 +13,13 @@ import java.util.Scanner;
 public class Main {
     
     public static void main(String[] args) throws SQLException {
-        String na;
-        int pa;
-        int ac;
-        double bl;
-        double am;
-        String ty;
+        String na,ty,y;
+        int pa, ac;
+        double bl, am;
         Date ti;
         Scanner sc = new Scanner(System.in);
         int num = 0;
         int num2 = 0;
-        String y;
 
         System.out.println("~ Hello, Wellcome To Our Free Banking App ~");
         System.out.println("---------------------------------------------\n");

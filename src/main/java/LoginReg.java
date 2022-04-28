@@ -15,13 +15,11 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Sayed
+ * @author Sayed Haque
  */
 
 public class LoginReg { 
-    
-    static Connection con = ConnectionSQL.connectDB();
-
+    static Connection con;
     static Statement stmt;
     static ResultSet rs;
     static ResultSet rp;
@@ -34,12 +32,14 @@ public class LoginReg {
     
     public static void ins() throws SQLException{
          // SELECT query
-             stmt= con.createStatement();
+            try{
+            con = ConnectionSQL.connectDB();
+            stmt= con.createStatement();
+            }catch(java.lang.ClassNotFoundException e){System.out.println(e);}
             
             String q1 = "SELECT * FROM `Bank`";
-             rs = stmt.executeQuery(q1);
-            if (rs.next())
-            {
+            rs = stmt.executeQuery(q1);
+            if (rs.next()){
                 System.out.printf("%n%-16s%-10s%-10s%-11s%-12s%-10s%n",
                         "Account_Number","UserName","Password","Type","Balance","Date");
                 System.out.printf("     %-11s%-10s%-10s%-11s%-12.2f%-10s%n",
@@ -51,6 +51,7 @@ public class LoginReg {
          // SELECT query
       
             try{
+            con = ConnectionSQL.connectDB();
             stmt= con.createStatement();
             String q1 = "INSERT INTO Bank (user_name,pass_code,account_type,account_balance,date)"
                     + " VALUES ('"+na+"', '"+pa+"', '"+ty+"', '"+bl+"', '"+locdate+"');";
@@ -58,37 +59,46 @@ public class LoginReg {
             if (result > 0){ System.out.println("Successfully Account Created!");}
             else{ System.out.println("Unsucessful Retry!");}
             }catch(java.sql.SQLIntegrityConstraintViolationException e){System.out.println("UserName Already Exist");}
+            catch(java.lang.ClassNotFoundException e){System.out.println(e);}
             catch(SQLException e){System.out.println(e);}
             
 }
     public static void login(String na,int pa) throws SQLException{
          // SELECT query
-             stmt= con.createStatement();
+            try{
+            con = ConnectionSQL.connectDB();
+            stmt= con.createStatement();
+            }catch(java.lang.ClassNotFoundException e){System.out.println(e);}
+            
             String q1 = "SELECT * FROM Bank WHERE user_name='" + na + "' AND pass_code='" + pa + "';";
-             rs = stmt.executeQuery(q1);
-             if (rs.next());
-             else{throw new ArithmeticException("Invalid UserName Or Password!");}
+            rs = stmt.executeQuery(q1);
+            if (rs.next());
+            else{throw new ArithmeticException("Invalid UserName Or Password!");}
          
              
 }
     
     public static void withdraw(int ac,double bl,String x) throws SQLException{
          // SELECT query
+            try{
+            con = ConnectionSQL.connectDB();
             stmt= con.createStatement();
-             try{
+            
             String q1 = "UPDATE Bank SET account_balance = account_balance " + x + bl + " WHERE Bank.account_number = " + ac + ";";
             //int result = stmt.executeUpdate(q1);
             stmt.executeUpdate(q1);
              
-             }catch(SQLException e){System.out.println(e);}
+            }catch(SQLException e){System.out.println(e);}
+             catch(java.lang.ClassNotFoundException e){System.out.println(e);}
              catch(Exception e){System.out.println(e);}
 }
     
     public static void Transfer(int ac,double bl,int ac2,double am) throws SQLException{
          // SELECT query
-             stmt= con.createStatement();
-              try{
-                  System.out.println(am);
+            try{
+            con = ConnectionSQL.connectDB();
+            stmt= con.createStatement();
+             
             if (bl > am){throw new ArithmeticException("Insufficient Balance");}
             String q2 = "UPDATE Bank SET account_balance = account_balance +"+bl+ " WHERE Bank.account_number = "+ac2+";";
             int result2 = stmt.executeUpdate(q2);
@@ -98,8 +108,9 @@ public class LoginReg {
 
             if (result2 ==1 && result == 1){ System.out.println("We take money from account. successfully send to His Account.");}
 
-             }catch(SQLException e){System.out.println(e);}
-              catch(Exception e){System.out.println(e);}
+            }catch(SQLException e){System.out.println(e);}
+             catch(java.lang.ClassNotFoundException e){System.out.println(e);}
+             catch(Exception e){System.out.println(e);}
 }
     
 }
