@@ -67,7 +67,14 @@ while (num !=3){
                     System.out.println("Entry: ");
                     num2 = sc.nextInt();
                     }catch(Exception e){System.out.println(e);}
-                    if (num2==1){}
+                    if (num2==1){
+                        System.out.printf("%n%-16s%-10s%-10s%-11s%-12s%-10s%n",
+                        "Account_Number","UserName","Password","Type","Balance","Date");
+                       System.out.printf("     %-11s%-10s%-10s%-11s%-12.2f%-10s%n",
+                        ac,na,pa,ty,am,ti);
+                       sc.nextLine();
+                       y =sc.nextLine();
+                    }
                     else if (num2==2){
                     System.out.println("You Have Only "+am+"$ Right Now!");
                         sc.nextLine();
