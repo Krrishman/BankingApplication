@@ -82,5 +82,22 @@ public class LoginReg {
              catch(Exception e){System.out.println(e);}
 }
     
+    public static void Transfer(int ac,double bl,int ac2,double am) throws SQLException{
+         // SELECT query
+             stmt= con.createStatement();
+              try{
+                  System.out.println(am);
+            if (bl > am){throw new ArithmeticException("Insufficient Balance");}
+            String q2 = "UPDATE Bank SET account_balance = account_balance +"+bl+ " WHERE Bank.account_number = "+ac2+";";
+            int result2 = stmt.executeUpdate(q2);
+            if (result2 == 0){throw new ArithmeticException("Invalid Account Number");}
+            String q1 = "UPDATE Bank SET account_balance = account_balance -"+bl+ " WHERE Bank.account_number = "+ac+";";
+            int result = stmt.executeUpdate(q1);
+
+            if (result2 ==1 && result == 1){ System.out.println("We take money from account. successfully send to His Account.");}
+
+             }catch(SQLException e){System.out.println(e);}
+              catch(Exception e){System.out.println(e);}
+}
     
 }
