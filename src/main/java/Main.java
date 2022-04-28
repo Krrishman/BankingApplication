@@ -74,8 +74,20 @@ while (num !=3){
                         y =sc.nextLine();
                     
                     }
-                    else if (num2==3){}
-                    else if (num2==4){
+                    else if (num2==3){
+                        try{
+                        System.out.println("How Much You Like To Withdraw?");
+                        System.out.println("Enter Amount:");
+                        bl = sc.nextDouble();
+                        String x=ty;
+                        if (bl > am){throw new ArithmeticException("Insufficient Balance");}
+                        if (ty.equals("Savings") && bl > 500){throw new ArithmeticException("You're Using Savings account.\nYou have a daily Limit of 500$.");}
+                        LoginReg.withdraw(ac, bl,"-");
+                        System.out.println("successfully withdraw");
+                        }catch(Exception e){System.out.println(e);}
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    } else if (num2==4){
                     try{
                         System.out.println("How Much You Like To Deposit?");
                         System.out.println("Enter Amount:");
