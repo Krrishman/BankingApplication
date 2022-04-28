@@ -75,8 +75,17 @@ while (num !=3){
                     
                     }
                     else if (num2==3){}
-                    else if (num2==4){}
-                    else if (num2==5){
+                    else if (num2==4){
+                    try{
+                        System.out.println("How Much You Like To Deposit?");
+                        System.out.println("Enter Amount:");
+                        bl = sc.nextDouble();
+                        LoginReg.withdraw(ac, bl,"+");
+                        System.out.println("successfully Deposit");
+                         }catch(Exception e){System.out.println(e);}
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    } else if (num2==5){
                         System.out.println("Who You Like To Send Money?");
                         System.out.println("Enter Account Number:");
                         int o_ac =sc.nextInt();
