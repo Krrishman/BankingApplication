@@ -67,6 +67,7 @@ while (num !=3){
                     System.out.println("Entry: ");
                     num2 = sc.nextInt();
                     }catch(Exception e){System.out.println(e);}
+                    
                     if (num2==1){
                         System.out.printf("%n%-16s%-10s%-10s%-11s%-12s%-10s%n",
                         "Account_Number","UserName","Password","Type","Balance","Date");
@@ -94,7 +95,8 @@ while (num !=3){
                         }catch(Exception e){System.out.println(e);}
                         sc.nextLine();
                         y =sc.nextLine();
-                    } else if (num2==4){
+                    } 
+                    else if (num2==4){
                     try{
                         System.out.println("How Much You Like To Deposit?");
                         System.out.println("Enter Amount:");
@@ -104,7 +106,8 @@ while (num !=3){
                          }catch(Exception e){System.out.println(e);}
                         sc.nextLine();
                         y =sc.nextLine();
-                    } else if (num2==5){
+                    } 
+                    else if (num2==5){
                         System.out.println("Who You Like To Send Money?");
                         System.out.println("Enter Account Number:");
                         int o_ac =sc.nextInt();
@@ -123,26 +126,57 @@ while (num !=3){
                     else if (num2==7){
                         System.out.println("You're Logged Out.\n");
                         break;
-                        
-                        
-                        
-                        
                     }
                     else {System.out.println("Wrong Input. ~Try Again~");
                         sc.nextLine();
                         y =sc.nextLine();}
-                    
                 }
                 
               
             }
-            else if(num==2){
+             else if(num==2){
+                try{
                 System.out.println("(1) Checking");
                 System.out.println("(2) Savings");
                 num2 = sc.nextInt();
-                if (num2==1){}
-                else if (num2==2){}
-                else{ System.out.println("~~~\n ");break;}
+                if (num2==1){
+                     try{
+                        System.out.println("For Creating a New Account On Our Bank,"
+                        + "\n~We need to have An Unique UserName, Password and how Much What To Deposit."
+                        + "\n~For Creating an UserName It can't be no more than 15 charecters."
+                        + "\n~For Password It can't be no more than 8 charecters (Only Number)."
+                        + "\n~No Space~\n~No Special Charecters~\n");
+                        System.out.println("UserName : ");
+                        sc.nextLine();
+                        na=sc.nextLine();
+                        System.out.println("Password : ");
+                        pa=sc.nextInt();
+                        System.out.println("$Deposit : ");
+                        bl=sc.nextDouble();
+                        LoginReg.createAcc(na,bl,pa,"Checking");
+                        }catch(Exception e){System.out.println("Invalid Entry");}
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    }
+                else if (num2==2){
+                        System.out.println("For Creating a New Account On Our Bank,"
+                        + "\n~We need to have An Unique UserName, Password and how Much What To Deposit."
+                        + "\n~For Creating an UserName It can't be no more than 15 charecters."
+                        + "\n~For Password It can't be no more than 8 charecters (Only Number)."
+                        + "\n~No Space~\n~No Special Charecters~\n");
+                        System.out.println("UserName : ");
+                        sc.nextLine();
+                        na=sc.nextLine();
+                        System.out.println("Password : ");
+                        pa=sc.nextInt();
+                        System.out.println("$Deposit : ");
+                        bl=sc.nextDouble();
+                        LoginReg.createAcc(na,bl,pa,"Savings");
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    }
+                else{ System.out.println("~~~\n "); break;}
+                }catch(java.util.InputMismatchException e){System.out.println(e);}
             }
 }
 }
