@@ -15,7 +15,7 @@ import java.time.LocalDate;
 
 /**
  *
- * @author Dadavai
+ * @author Sayed
  */
 
 public class LoginReg { 
