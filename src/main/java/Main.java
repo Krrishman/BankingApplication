@@ -8,20 +8,30 @@
  * @author Sayed Haque
  */
 import java.sql.*; 
+import java.util.Scanner;
 
 public class Main {
     
     public static void main(String[] args) throws SQLException {
-		System.out.println("Hello World");
-                System.out.println("Hello World");
-      
-        LoginReg.ins();
-        LoginReg.login("ron", 2222);
-        LoginReg.createAcc("kgf",100,1452);
-        
-    }
-}
+        String na;
+        int pa;
+        int ac;
+        double bl;
+        double am;
+        String ty;
+        Date ti;
+        Scanner sc = new Scanner(System.in);
+        int num = 0;
+        int num2 = 0;
+        String y;
 
+        System.out.println("~ Hello, Wellcome To Our Free Banking App ~");
+        System.out.println("---------------------------------------------\n");
+        
+        
+        
+}
+}
 //sql5.freesqldatabase.com
 //sql5485641
 //CmwSKSz67l
