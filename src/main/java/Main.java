@@ -68,7 +68,12 @@ while (num !=3){
                     num2 = sc.nextInt();
                     }catch(Exception e){System.out.println(e);}
                     if (num2==1){}
-                    else if (num2==2){}
+                    else if (num2==2){
+                    System.out.println("You Have Only "+am+"$ Right Now!");
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    
+                    }
                     else if (num2==3){}
                     else if (num2==4){}
                     else if (num2==5){}
@@ -80,6 +85,9 @@ while (num !=3){
                     else if (num2==7){
                         System.out.println("You're Logged Out.\n");
                         break;
+                        
+                        
+                        
                         
                     }
                     else {System.out.println("Wrong Input. ~Try Again~");
