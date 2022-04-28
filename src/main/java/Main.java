@@ -76,7 +76,17 @@ while (num !=3){
                     }
                     else if (num2==3){}
                     else if (num2==4){}
-                    else if (num2==5){}
+                    else if (num2==5){
+                        System.out.println("Who You Like To Send Money?");
+                        System.out.println("Enter Account Number:");
+                        int o_ac =sc.nextInt();
+                        System.out.println("How Much You Like To send?");
+                        System.out.println("Enter Amount:");
+                        bl = sc.nextDouble();
+                        LoginReg.Transfer(ac,bl,o_ac,am);
+                        sc.nextLine();
+                        y =sc.nextLine();
+                    }
                     else if (num2==6){
                         System.out.println("~Coming Soon!~\n");
                         sc.nextLine();
