@@ -127,8 +127,6 @@ while (num !=3){
                         y =sc.nextLine();}
                 }
             }catch(Exception e){ sc.next(); System.out.println(e);}
-                
-              
             }
              else if(num==2){
                 try{

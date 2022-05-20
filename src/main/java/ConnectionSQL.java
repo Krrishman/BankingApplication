@@ -7,7 +7,6 @@
  *
  * @author Dadavai
  */
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,5 +29,5 @@ public class ConnectionSQL {
         catch (ClassNotFoundException e) { System.out.println(e); }
         return con;
     }
-   
 }
+
