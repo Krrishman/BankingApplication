@@ -20,7 +20,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int num = 0;
         int num2 = 0;
-
+        LoginReg.ins();
         System.out.println("~ Hello, Wellcome To Our Free Banking App ~");
         System.out.println("---------------------------------------------\n");
         
@@ -127,8 +127,6 @@ while (num !=3){
                         y =sc.nextLine();}
                 }
             }catch(Exception e){ sc.next(); System.out.println(e);}
-                
-              
             }
              else if(num==2){
                 try{
@@ -177,10 +175,11 @@ while (num !=3){
 }
 }
 }
-//sql5.freesqldatabase.com
-//sql5485641
-//CmwSKSz67l
-//3306
+//Host: sql5.freesqldatabase.com
+//Database name: sql5493778
+//Database user: sql5493778
+//Database password: E8NZuyfi2B
+//Port number: 3306
 //jdbc:mysql://localhost:3306/mydata
 //com.microsoft.sqlserver
 //jdbc.SQLServerDriver

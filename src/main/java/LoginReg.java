@@ -17,7 +17,6 @@ import java.time.LocalDate;
  *
  * @author Sayed Haque
  */
-
 public class LoginReg { 
     static Connection con;
     static Statement stmt;
