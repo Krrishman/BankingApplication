@@ -24,7 +24,7 @@ public class ConnectionSQL {
         try { 
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection( 
-                    "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5488014", "sql5488014", "qTxEvBpucl");
+                    "jdbc:mysql://sql5.freesqldatabase.com:3306/sql5493778", "sql5493778", "E8NZuyfi2B");
         } 
         catch (SQLException e) { System.out.println(e); } 
         catch (ClassNotFoundException e) { System.out.println(e); }
