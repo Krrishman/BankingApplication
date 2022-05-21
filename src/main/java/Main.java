@@ -12,170 +12,119 @@ import java.util.Scanner;
 
 public class Main {
     
-    public static void main(String[] args) throws SQLException {
-        String na,ty,y;
-        int pa, ac;
-        double bl, am;
-        Date ti;
+    
+    public static void appLoop() throws SQLException  {
+        
+        // Used for account info
+        String name,accountType;
+        int password, accountNumber;
+        double balance, amount;
+        
         Scanner sc = new Scanner(System.in);
-        int num = 0;
-        int num2 = 0;
+        
+        // User's choice
+        int choice = 0;
+        int choice2 = 0;
+        
+        while (choice != 3) {
+            
+            System.out.println("(1) Register for a new account");
+            System.out.println("(2) Login");
+            System.out.println("(3) Exit");
+            System.out.println("Enter: ");
+                
+                choice = sc.nextInt();
+                
+                switch (choice) {
+                    case 1:
+                        // Start of Registration
+                        System.out.println("Would you like to create a Savings or Checking account?");
+                        System.out.println("(1) Checking");
+                        System.out.println("(2) Savings");
+                        System.out.println("(3) Exit");
+                        
+                        choice2 = sc.nextInt();
+                        
+                        switch (choice2) {
+                            case 1:
+                                // Create Checking Account
+                                Account.createAcc("Checking");
+                                break;
+                            case 2:
+                                // Create Savings Account
+                                Account.createAcc("Savings");
+                                break;
+                            default:
+                                // Return
+                                break;
+                        }
+                        // End of Registration
+                        break;
+                    case 2:
+                        // Start of Login
+
+                        System.out.println("UserName : ");
+                        sc.nextLine();
+                        name = sc.nextLine();
+                        System.out.println("Password : ");
+                        password=sc.nextInt();
+                        Account.login(name, password);
+                        System.out.println("Successfully Logged IN\n");
+                        
+                            System.out.println("(1) Check Balance");
+                            System.out.println("(2) Withdraw");
+                            System.out.println("(3) Deposit");
+                            System.out.println("(4) Transfer");
+                            System.out.println("(5) Profile");
+                            System.out.println("(6) Log Out");
+                            
+                            choice2 = sc.nextInt();
+                        
+                            switch (choice2) {
+                                case 1:
+                                    // Check Balance
+                                    Account.checkBalance();
+                                    break;
+                                case 2:
+                                    // Withdraw
+                                    Account.withdraw();
+                                    break;
+                                case 3:
+                                    // Deposit
+                                    Account.deposit();
+                                    break;
+                                case 4:
+                                    // Transfer
+                                    Account.Transfer();
+                                    break;
+                                case 5:
+                                    // Profile
+                                    Account.Profile();
+                                    break;
+                                default:
+                                    // Log Out
+                                    break;
+                            }
+                        // End of Login
+                        break;
+                    default:
+                        // Exit
+                        return;
+                        
+                }
+        }
+    }
+    
+    public static void main(String[] args) throws SQLException {
+
         System.out.println("~ Hello, Wellcome To Our Free Banking App ~");
         System.out.println("---------------------------------------------\n");
         
-while (num !=3){
-            try{ 
-                num2 = 0;
-                System.out.println("(1) Login");
-                System.out.println("(2) Register For New Account");
-                System.out.println("(3) Exit");
-                System.out.println("Enter: ");
-                num = sc.nextInt();
-            }catch(Exception e){sc.nextLine();System.out.println(e);}
-            if (num==1){
-                 try{ 
-                        System.out.println("UserName : ");
-                        sc.nextLine();
-                        na=sc.nextLine();
-                        System.out.println("Password : ");
-                        pa=sc.nextInt();
-                        LoginReg.login(na, pa);
-                        System.out.println("Successfully Logged IN\n");
-                        
-                while (num2 !=7){
-                   LoginReg.login(na, pa);
-                    ac = LoginReg.rs.getInt(1);
-                    na = LoginReg.rs.getString(2);
-                    pa = LoginReg.rs.getInt(3);
-                    ty = LoginReg.rs.getString(4);
-                    am = LoginReg.rs.getDouble(5);
-                    ti = LoginReg.rs.getDate(6);
-                    try{
-                    System.out.println("(1) Profile");
-                    System.out.println("(2) Check Balance");
-                    System.out.println("(3) Withdraw");
-                    System.out.println("(4) Deposit");
-                    System.out.println("(5) Send Money");
-                    System.out.println("(6) Balance History");
-                    System.out.println("(7) LogOut");
-                    System.out.println("Entry: ");
-                    num2 = sc.nextInt();
-                    }catch(Exception e){System.out.println(e);}
-                    
-                    if (num2==1){
-                        System.out.printf("%n%-16s%-10s%-10s%-11s%-12s%-10s%n",
-                        "Account_Number","UserName","Password","Type","Balance","Date");
-                       System.out.printf("     %-11s%-10s%-10s%-11s%-12.2f%-10s%n",
-                        ac,na,pa,ty,am,ti);
-                       sc.nextLine();
-                       y =sc.nextLine();
-                    }
-                    else if (num2==2){
-                    System.out.println("You Have Only "+am+"$ Right Now!");
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    
-                    }
-                    else if (num2==3){
-                        try{
-                        System.out.println("How Much You Like To Withdraw?");
-                        System.out.println("Enter Amount:");
-                        bl = sc.nextDouble();
-                        String x=ty;
-                        if (bl > am){throw new ArithmeticException("Insufficient Balance");}
-                        if (ty.equals("Savings") && bl > 500){throw new ArithmeticException("You're Using Savings account.\nYou have a daily Limit of 500$.");}
-                        LoginReg.withdraw(ac, bl,"-");
-                        System.out.println("successfully withdraw");
-                        }catch(Exception e){System.out.println(e);}
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    } 
-                    else if (num2==4){
-                    try{
-                        System.out.println("How Much You Like To Deposit?");
-                        System.out.println("Enter Amount:");
-                        bl = sc.nextDouble();
-                        LoginReg.withdraw(ac, bl,"+");
-                        System.out.println("successfully Deposit");
-                         }catch(Exception e){System.out.println(e);}
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    } 
-                    else if (num2==5){
-                        System.out.println("Who You Like To Send Money?");
-                        System.out.println("Enter Account Number:");
-                        int o_ac =sc.nextInt();
-                        System.out.println("How Much You Like To send?");
-                        System.out.println("Enter Amount:");
-                        bl = sc.nextDouble();
-                        LoginReg.Transfer(ac,bl,o_ac,am);
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    }
-                    else if (num2==6){
-                        System.out.println("~Coming Soon!~\n");
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    }
-                    else if (num2==7){
-                        System.out.println("You're Logged Out.\n");
-                        break;
-                    }
-                    else {System.out.println("Wrong Input. ~Try Again~");
-                        sc.nextLine();
-                        y =sc.nextLine();}
-                }
-            }catch(Exception e){ sc.next(); System.out.println(e);}
-                
-              
-            }
-             else if(num==2){
-                try{
-                System.out.println("(1) Checking");
-                System.out.println("(2) Savings");
-                num2 = sc.nextInt();
-                if (num2==1){
-                     try{
-                        System.out.println("For Creating a New Account On Our Bank,"
-                        + "\n~We need to have An Unique UserName, Password and how Much What To Deposit."
-                        + "\n~For Creating an UserName It can't be no more than 15 charecters."
-                        + "\n~For Password It can't be no more than 8 charecters (Only Number)."
-                        + "\n~No Space~\n~No Special Charecters~\n");
-                        System.out.println("UserName : ");
-                        sc.nextLine();
-                        na=sc.nextLine();
-                        System.out.println("Password : ");
-                        pa=sc.nextInt();
-                        System.out.println("$Deposit : ");
-                        bl=sc.nextDouble();
-                        LoginReg.createAcc(na,bl,pa,"Checking");
-                        }catch(Exception e){System.out.println("Invalid Entry");}
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    }
-                else if (num2==2){
-                        System.out.println("For Creating a New Account On Our Bank,"
-                        + "\n~We need to have An Unique UserName, Password and how Much What To Deposit."
-                        + "\n~For Creating an UserName It can't be no more than 15 charecters."
-                        + "\n~For Password It can't be no more than 8 charecters (Only Number)."
-                        + "\n~No Space~\n~No Special Charecters~\n");
-                        System.out.println("UserName : ");
-                        sc.nextLine();
-                        na=sc.nextLine();
-                        System.out.println("Password : ");
-                        pa=sc.nextInt();
-                        System.out.println("$Deposit : ");
-                        bl=sc.nextDouble();
-                        LoginReg.createAcc(na,bl,pa,"Savings");
-                        sc.nextLine();
-                        y =sc.nextLine();
-                    }
-                else{ System.out.println("~~~\n "); break;}
-                }catch(java.util.InputMismatchException e){System.out.println(e);}
-            }
+        appLoop();
+    } 
 }
-}
-}
+
+
 //Host: sql5.freesqldatabase.com
 //Database name: sql5493778
 //Database user: sql5493778
